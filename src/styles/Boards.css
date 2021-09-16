@@ -226,12 +226,12 @@ p {
     transform: scale(1.05);
 }
 
-.div1 {
+.board__name {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
 
-.divA {
+.board {
     transition: 0.5s;
     font-weight: 600;
     text-transform: uppercase;
@@ -255,7 +255,7 @@ p {
     box-shadow: 10px 10px 20px #ec41b350, -10px -10px 20px #2af5f549;
 }
 
-.divA:hover {
+.board:hover {
     transition: 0.5s;
     transform: scale(1.07);
 }
