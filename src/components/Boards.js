@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import 'C:/Users/herey/Trello/trello/src/styles/Boards.css';
+import '../styles/Boards.css';
 import React from 'react';
 import { BrowserRouter, Link } from "react-router-dom";
 import Board from './Board'
