@@ -2,8 +2,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import '../styles/Boards.css';
 import React from 'react';
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Board from './Board'
+import Card from './Card'
 
 
 class Boards extends React.PureComponent {
@@ -32,35 +33,19 @@ class Boards extends React.PureComponent {
         const { boards } = this.state
         return (
             <BrowserRouter>
-                <div className="boards" >
-                    <header className="boards-header">
-                        <div className="center">
-                            <div className="property-card">
-                                <a href="#okno">
-                                    <div className="property-image">
-                                        <label for="openclose" id="button">
-                                            <div className="property-image-title">
-                                                <h5>CREATE</h5>
-                                            </div>
-                                        </label>
-                                    </div></a>
-                                <div className="property-description">
-                                    <h5> CREATE NEW BOARD</h5>
-                                    <p></p>
-                                </div>
-                                <a href="#">
-                                </a>
-                            </div>
-                            <Link to="/">
-                                <div id="container">
-                                    {boards.map(board => (
-                                        <Board name={board.name} />
-                                    ))}
-                                </div>
-                            </Link>
-                        </div>
+                <div className="container" >
 
-                    </header>
+                    <div>
+                        <Card />
+                    </div>
+
+                    <div className="center">
+                        <div className="boards">
+                            {boards.map(board => (
+                                <Board name={board.name} />
+                            ))}
+                        </div>
+                    </div>
 
                     <input type="checkbox" id="openclose"></input>
                     <div className="modal-wrapper">
