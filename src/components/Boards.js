@@ -5,6 +5,8 @@ import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import Board from './Board'
 import Card from './Card'
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 class Boards extends React.PureComponent {
@@ -21,12 +23,19 @@ class Boards extends React.PureComponent {
 
     handleClick() {
         const { boards, name } = this.state
-        const board = { name: name }
+        const board = { name: name, id: uuidv4() }
+        console.log(board);
         this.setState({ boards: [...boards, board] })
+        localStorage.setItem('boards', JSON.stringify([...boards, board]));
     }
 
     handleNameChange(event) {
         this.setState({ name: event.target.value })
+    }
+
+    componentDidMount() {
+        const boards = JSON.parse(localStorage.getItem('boards'));
+        if (boards) { this.setState({ boards: boards }) };
     }
 
     render() {
@@ -42,7 +51,7 @@ class Boards extends React.PureComponent {
                     <div className="center">
                         <div className="boards">
                             {boards.map(board => (
-                                <Board name={board.name} />
+                                <Board name={board.name} id={board.id} />
                             ))}
                         </div>
                     </div>

@@ -10,6 +10,7 @@ function Board(props) {
         <BrowserRouter>
             <Link to="/">
                 <div className={'board'}>
+                    <div className={'cross'}>	&#10006;    </div>
                     <div className={'board__name'}>
                         {props.name}
                     </div>

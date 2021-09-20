@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 
-
 .container {
     display: flex;
     justify-content: center;
@@ -259,4 +258,17 @@ p {
     text-align: center;
     color: rgb(0, 0, 0);
     margin-left: 250px;
+}
+
+.cross {
+    transition: 0.2s;
+    color: white;
+    top: 6px;
+    right: 11px;
+    position: absolute;
+}
+
+.cross:hover {
+    transition: 0.2s;
+    color: #df5555;
 }
