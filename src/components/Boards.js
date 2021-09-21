@@ -15,6 +15,7 @@ class Boards extends React.PureComponent {
         super(props)
         this.handleClick = this.handleClick.bind(this)
         this.handleNameChange = this.handleNameChange.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
         this.state = {
             boards: [],
             name: ''
@@ -24,13 +25,21 @@ class Boards extends React.PureComponent {
     handleClick() {
         const { boards, name } = this.state
         const board = { name: name, id: uuidv4() }
-        console.log(board);
+        const boarder = this.state.boards.filter(board => board.id !== 1);
+        console.log(board, boarder);
         this.setState({ boards: [...boards, board] })
         localStorage.setItem('boards', JSON.stringify([...boards, board]));
     }
 
     handleNameChange(event) {
         this.setState({ name: event.target.value })
+    }
+
+    handleRemove(id) {
+        const { boards } = this.state;
+        const filterBoards = boards.filter(board => board.id !== id)
+        this.setState({ boards: filterBoards })
+        localStorage.setItem('boards', JSON.stringify(filterBoards));
     }
 
     componentDidMount() {
@@ -51,7 +60,7 @@ class Boards extends React.PureComponent {
                     <div className="center">
                         <div className="boards">
                             {boards.map(board => (
-                                <Board name={board.name} id={board.id} />
+                                <Board name={board.name} id={board.id} onRemove={this.handleRemove} />
                             ))}
                         </div>
                     </div>
