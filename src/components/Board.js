@@ -5,24 +5,29 @@ import '../styles/Boards.css';
 import React from 'react';
 import BoardCard from './BoardCard'
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 
 function Board(props) {
     const { name, id, onRemove } = props;
 
-    function onCrossClick() {
+    const history = useHistory();
+
+    function onCrossClick(event) {
+        event.stopPropagation();
         props.onRemove(props.id)
     }
 
+    const onBoardClick = () => {
+        history.push(`/board/${id}`)
+    }
+
     return (
-        <Link to={`/boards/${id}`}>
-            <div className={'board'}>
+            <div className={'board'} onClick={onBoardClick}>
                 <div className={'cross'} onClick={onCrossClick}>   &#10006;   </div>
                 <div className={'board__name'}>
                     {props.name}
                 </div>
             </div>
-        </Link>
     );
 }
 

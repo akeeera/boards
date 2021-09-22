@@ -6,6 +6,7 @@ import Boards from './Boards'
 import BoardCard from './BoardCard'
 import Board from './Board'
 import '../styles/Boards.css';
+import Logo from './Logo';
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,13 +20,14 @@ class Routes extends React.PureComponent {
     render() {
         return (
             <Router>
+                <Logo />
                 <Switch>
                     <Route exact path="/boards">
                         <Boards>
                             <Board />
                         </Boards >
                     </Route>
-                    <Route path="board/:id" children={<BoardCard />} />
+                    <Route path="/board/:id" children={<BoardCard />} />
                     <Route path="*">
                         <Redirect to="/boards" />
                     </Route>

@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import '../styles/Boards.css';
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
 import Board from './Board'
 import Card from './Card'
 import { v4 as uuidv4 } from 'uuid';
@@ -50,7 +49,6 @@ class Boards extends React.PureComponent {
     render() {
         const { boards } = this.state
         return (
-            <BrowserRouter>
                 <div className="container" >
 
                     <div>
@@ -81,7 +79,6 @@ class Boards extends React.PureComponent {
                         </div>
                     </div>
                 </div>
-            </BrowserRouter>
         );
     }
 

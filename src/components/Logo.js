@@ -1,12 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import logo from '../img/logo.png';
 import logo2 from '../img/logo2.png';
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../styles/App.css';
 
 function Logo() {
   return (
-    <BrowserRouter>
       <div className="App">
         <Link to = "/boards">
           <div className="logo2">
@@ -20,7 +19,6 @@ function Logo() {
           <hr></hr>
         </header>
       </div>
-    </BrowserRouter>
   );
 }
 
