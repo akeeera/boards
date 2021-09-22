@@ -3,6 +3,7 @@
 import '../styles/Boards.css';
 import React from "react";
 import Boards from './Boards'
+import BoardCard from './BoardCard'
 import Board from './Board'
 import '../styles/Boards.css';
 import {
@@ -20,11 +21,11 @@ class Routes extends React.PureComponent {
             <Router>
                 <Switch>
                     <Route exact path="/boards">
-                    
                         <Boards>
                             <Board />
                         </Boards >
                     </Route>
+                    <Route path="board/:id" children={<BoardCard />} />
                     <Route path="*">
                         <Redirect to="/boards" />
                     </Route>
@@ -33,6 +34,5 @@ class Routes extends React.PureComponent {
         );
     }
 }
-
 
 export default Routes;
