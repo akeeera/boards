@@ -8,13 +8,13 @@ function Logo() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Link to="/">
+        <Link to="/boards">
           <div className="logo2">
             <img src={logo2} alt="logo" className="app-logo2" />
           </div>
         </Link>
         <header className="App-header">
-          <Link to="/">
+          <Link to="/boards">
             <img src={logo} alt="logo" className="App-logo" />
           </Link>
           <hr></hr>
