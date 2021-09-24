@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
-class Boards extends React.PureComponent {
+export default class Boards extends React.PureComponent {
 
     constructor(props) {
         super(props)
@@ -49,39 +49,37 @@ class Boards extends React.PureComponent {
     render() {
         const { boards } = this.state
         return (
-                <div className="container" >
+            <div className="container" >
 
-                    <div>
-                        <Card />
+                <div>
+                    <Card />
+                </div>
+
+                <div className="center">
+                    <div className="boards">
+                        {boards.map(board => (
+                            <Board name={board.name} id={board.id} onRemove={this.handleRemove} />
+                        ))}
                     </div>
+                </div>
 
-                    <div className="center">
-                        <div className="boards">
-                            {boards.map(board => (
-                                <Board name={board.name} id={board.id} onRemove={this.handleRemove} />
-                            ))}
-                        </div>
-                    </div>
-
-                    <input type="checkbox" id="openclose"></input>
-                    <div className="modal-wrapper">
-                        <div className="modal">
-                            <label for="openclose" className="close">&times;</label>
-                            <div className="formsent">
-                                <form>
-                                    <label className="name">
-                                        Board name:  &nbsp;
-                                        <input className="boardname" type="text" id="text1" name="name" onChange={this.handleNameChange} />
-                                        <input className="sendname" type="button" value="CREATE" onClick={this.handleClick} />
-                                    </label>
-                                </form>
-                            </div>
+                <input type="checkbox" id="openclose"></input>
+                <div className="modal-wrapper">
+                    <div className="modal">
+                        <label for="openclose" className="close">&times;</label>
+                        <div className="formsent">
+                            <form>
+                                <label className="name">
+                                    Board name:  &nbsp;
+                                    <input className="boardname" type="text" id="text1" name="name" onChange={this.handleNameChange} />
+                                    <input className="sendname" type="button" value="CREATE" onClick={this.handleClick} />
+                                </label>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
         );
     }
 
 }
-
-export default Boards;
