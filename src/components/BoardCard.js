@@ -1,75 +1,46 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-// import { useParams } from "react-router-dom";
-// let { id } = useParams();
+import { withRouter } from "react-router-dom";
 import Board from 'react-trello';
 
 class BoardCard extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+        this.state = {
+            data: {
+                lanes: []
+            }
+        }
+    }
+
+    handleChange(data) {
+        const id = this.props.match.params.id;
+        this.setState({ data: data })
+        const dictionary = JSON.parse(localStorage.getItem('boardList')) || {};
+        dictionary[id] = data;
+        localStorage.setItem('boardList', JSON.stringify(dictionary));
+    }
+
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        const dictionary = JSON.parse(localStorage.getItem('boardList')) || {};
+        const data = dictionary[id];
+        if (data) { this.setState({ data }) };
+    }
+
 
     render() {
         return (
             <Board
                 canAddLanes
-                data={{
-                    lanes: [
-                        {
-                            cards: [
-                                {
-                                    description: '2 Gallons of milk at the Deli store',
-                                    id: 'Card1',
-                                    label: '2017-12-01',
-                                    laneId: 'SORTED_LANE',
-                                    metadata: {
-                                        completedAt: '2017-12-01T10:00:00Z',
-                                        shortCode: 'abc'
-                                    },
-                                    title: 'Buy milk'
-                                },
-                                {
-                                    description: 'Sort out recyclable and waste as needed',
-                                    id: 'Card2',
-                                    label: '2017-11-01',
-                                    laneId: 'SORTED_LANE',
-                                    metadata: {
-                                        completedAt: '2017-11-01T10:00:00Z',
-                                        shortCode: 'aaa'
-                                    },
-                                    title: 'Dispose Garbage'
-                                },
-                                {
-                                    description: 'Can AI make memes?',
-                                    id: 'Card3',
-                                    label: '2017-10-01',
-                                    laneId: 'SORTED_LANE',
-                                    metadata: {
-                                        completedAt: '2017-10-01T10:00:00Z',
-                                        shortCode: 'fa1'
-                                    },
-                                    title: 'Write Blog'
-                                },
-                                {
-                                    description: 'Transfer to bank account',
-                                    id: 'Card4',
-                                    label: '2017-09-01',
-                                    laneId: 'SORTED_LANE',
-                                    metadata: {
-                                        completedAt: '2017-09-01T10:00:00Z',
-                                        shortCode: 'ga2'
-                                    },
-                                    title: 'Pay Rent'
-                                }
-                            ],
-                            currentPage: 1,
-                            id: 'SORTED_LANE',
-                            label: '20/70',
-                            title: 'Sorted Lane'
-                        }
-                    ]
-                }}
+                data={this.state.data}
                 editable
-                onLaneAdd={function noRefCheck() { }} />
+                onDataChange={this.handleChange}
+            />
         )
     }
 }
 
-export default BoardCard;
+export default withRouter(BoardCard)
