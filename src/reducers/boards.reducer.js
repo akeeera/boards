@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getBoards, setBoards } from "./actions/boards.actions";
+import { getBoards } from "../actions/boards.actions";
+import { initialState } from "../store/store";
 
 export const boardsSlice = createSlice({
     name: 'boards',
-    initialState: { boards: [] },
+    initialState: initialState.boards,
     reducers: {
     },
     extraReducers: (builder) => {
