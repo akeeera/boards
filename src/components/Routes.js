@@ -16,25 +16,23 @@ import {
 
 
 
-class Routes extends React.PureComponent {
-    render() {
-        return (
-            <Router>
-                <Logo />
-                <Switch>
-                    <Route exact path="/boards">
-                        <Boards>
-                            <Board />
-                        </Boards >
-                    </Route>
-                    <Route path="/board/:id" children={<BoardCard />} />
-                    <Route path="*">
-                        <Redirect to="/boards" />
-                    </Route>
-                </Switch>
-            </Router>
-        );
-    }
+function Routes() {
+    return (
+        <Router>
+            <Logo />
+            <Switch>
+                <Route exact path="/boards">
+                    <Boards>
+                        <Board />
+                    </Boards >
+                </Route>
+                <Route path="/board/:id" children={<BoardCard />} />
+                <Route path="*">
+                    <Redirect to="/boards" />
+                </Route>
+            </Switch>
+        </Router>
+    );
 }
 
 export default Routes;

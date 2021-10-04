@@ -22,12 +22,12 @@ function Board(props) {
     }
 
     return (
-            <div className={'board'} onClick={onBoardClick}>
-                <div className={'cross'} onClick={onCrossClick}>   &#10006;   </div>
-                <div className={'board__name'}>
-                    {props.name}
-                </div>
+        <div className={'board'} onClick={onBoardClick}>
+            <div className={'cross'} onClick={onCrossClick}>   &#10006;   </div>
+            <div className={'board__name'}>
+                {props.name}
             </div>
+        </div>
     );
 }
 

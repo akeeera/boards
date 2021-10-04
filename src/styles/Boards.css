@@ -146,13 +146,12 @@ p {
 
 .modal {
     transition: 1000ms;
-    width: 500px;
-    height: 150px;
-    background-color: rgba(255, 255, 255, 0.486);
+    width: 450px;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
     margin: auto;
     border-radius: 20px;
     position: relative;
-    box-shadow: 10px 10px 20px #41b6ec1a, -10px -10px 20px #f52ab111;
 }
 
 .modal .close {
@@ -198,7 +197,7 @@ p {
 
 .boardname {
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.404);
+    background-color: rgb(255, 255, 255);
     padding: 0.7em;
 }
 
@@ -206,11 +205,11 @@ p {
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
     transition: 0.5s;
-    background: linear-gradient(45deg, #5ec7e7, #bedd58);
-    border-radius: 6px 20px 20px 6px;
+    background: linear-gradient(45deg, #5ec7e7, #58dd96);
+    border-radius: 25px;
     border: none;
-    padding: 33px;
-    margin-left: 15px;
+    padding: 9px;
+    margin-left: 10px;
 }
 
 .sendname:hover {

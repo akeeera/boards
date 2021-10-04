@@ -3,17 +3,13 @@
 import React from 'react';
 import Routes from './Routes';
 
+function App() {
 
-
-class App extends React.PureComponent {
-
-    render() {
-        return (
-            <>
-                <Routes />
-            </>
-        );
-    }
+    return (
+        <>
+            <Routes />
+        </>
+    );
 
 }
 
