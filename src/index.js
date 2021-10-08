@@ -20,8 +20,3 @@ ReactDOM.render(
 );
 
 reportWebVitals();
-
-{/* <Logo />
-<Boards>
-  <Board />
-</Boards> */}

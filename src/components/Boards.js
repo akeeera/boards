@@ -1,3 +1,4 @@
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import '../styles/Boards.css';
@@ -6,19 +7,22 @@ import { useSelector } from 'react-redux';
 import Board from './Board';
 import Card from './Card';
 import { v4 as uuidv4 } from 'uuid';
-import { getBoards, setBoards } from "../actions/boards.actions";
+import { actionTest } from '../store/store';
+import { useDispatch } from 'react-redux';
 
 export const Boards = () => {
 
-    const { boards } = useSelector(state => state)
+    // const { boards } = useSelector(state => state)
     const [name, setName] = useState('')
-
+    const [boards, setBoards] = useState([])
+    const dispatch = useDispatch();
 
     function handleClick() {
         const board = { name: name, id: uuidv4() }
         const boarder = boards.filter(board => board.id !== 1);
         console.log(board, boarder);
-        setBoards(boards)
+        setBoards([...boards, board])
+        localStorage.setItem('boards', JSON.stringify([...boards, board]));
     }
 
     function handleNameChange(event) {
@@ -27,11 +31,15 @@ export const Boards = () => {
 
     function handleRemove(id) {
         const filterBoards = boards.filter(board => board.id !== id)
+        setBoards(filterBoards)
         localStorage.setItem('boards', JSON.stringify(filterBoards));
     }
 
     useEffect(() => {
-        getBoards()
+        const boards = JSON.parse(localStorage.getItem('boards'));
+        if (boards) { setBoards(boards) };
+        dispatch(actionTest)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
