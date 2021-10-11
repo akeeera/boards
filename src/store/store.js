@@ -8,29 +8,45 @@ import {
     combineReducers
 } from '@reduxjs/toolkit'
 
-const preloadedState = {
-    test: ''
+export const preloadedState = {
+    boards: {
+        data: []
+    }
 }
 
-export const actionTest = createAsyncThunk(
-    'test/actionTest',
+export const getBoards = createAsyncThunk(
+    'boards/getBoards',
     async () => {
-        return 'test'
+        const boards = JSON.parse(localStorage.getItem('boards'));
+        return boards;
     }
 )
 
-export const sliceTest = createSlice({
-    name: 'test',
-    initialState: preloadedState.test,
+export const setBoards = createAsyncThunk(
+    'boards/setBoards',
+    async (boards) => {
+        localStorage.setItem('boards', JSON.stringify(boards));
+        return boards;
+    }
+)
+
+export const sliceBoards = createSlice({
+    name: 'boards',
+    initialState: preloadedState.boards,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(actionTest.fulfilled, (state, action) => {
-            state.test = action.payload
+        builder.addCase(getBoards.fulfilled, (state, action) => {
+            state.data = action.payload
+        })
+        builder.addCase(setBoards.fulfilled, (state, action) => {
+            state.data = action.payload
         })
     },
 })
 
-export const reducer = combineReducers({})
+export const reducer = combineReducers({
+    boards: sliceBoards.reducer
+})
 
 export const store = configureStore({
     reducer,

@@ -3,26 +3,25 @@
 /* eslint-disable jsx-a11y/alt-text */
 import '../styles/Boards.css';
 import React, { useState, useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Board from './Board';
 import Card from './Card';
 import { v4 as uuidv4 } from 'uuid';
-import { actionTest } from '../store/store';
+import { getBoards } from '../store/store';
+import { setBoards } from '../store/store';
 import { useDispatch } from 'react-redux';
 
 export const Boards = () => {
 
-    // const { boards } = useSelector(state => state)
+    const { boards } = useSelector(state => state)
     const [name, setName] = useState('')
-    const [boards, setBoards] = useState([])
     const dispatch = useDispatch();
 
     function handleClick() {
         const board = { name: name, id: uuidv4() }
         const boarder = boards.filter(board => board.id !== 1);
         console.log(board, boarder);
-        setBoards([...boards, board])
-        localStorage.setItem('boards', JSON.stringify([...boards, board]));
+        dispatch(setBoards(boards.data))
     }
 
     function handleNameChange(event) {
@@ -31,14 +30,11 @@ export const Boards = () => {
 
     function handleRemove(id) {
         const filterBoards = boards.filter(board => board.id !== id)
-        setBoards(filterBoards)
-        localStorage.setItem('boards', JSON.stringify(filterBoards));
+        dispatch(setBoards(filterBoards))
     }
 
     useEffect(() => {
-        const boards = JSON.parse(localStorage.getItem('boards'));
-        if (boards) { setBoards(boards) };
-        dispatch(actionTest())
+        dispatch(getBoards())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -51,7 +47,7 @@ export const Boards = () => {
 
             <div className="center">
                 <div className="boards">
-                    {boards.map(board => (
+                    {boards.data.map(board => (
                         <Board name={board.name} id={board.id} onRemove={handleRemove} />
                     ))}
                 </div>
