@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import '../styles/Boards.css';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import Board from './Board';
 import Card from './Card';
 import { v4 as uuidv4 } from 'uuid';
@@ -38,7 +38,7 @@ export const Boards = () => {
     useEffect(() => {
         const boards = JSON.parse(localStorage.getItem('boards'));
         if (boards) { setBoards(boards) };
-        dispatch(actionTest)
+        dispatch(actionTest())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

@@ -1,6 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
+import {
+    configureStore
+} from '@reduxjs/toolkit'
 import logger from 'redux-logger'
-import { createAsyncThunk, createSlice, combineReducers } from '@reduxjs/toolkit'
+import {
+    createAsyncThunk,
+    createSlice,
+    combineReducers
+} from '@reduxjs/toolkit'
 
 const preloadedState = {
     test: ''
@@ -16,12 +22,15 @@ export const actionTest = createAsyncThunk(
 export const sliceTest = createSlice({
     name: 'test',
     initialState: preloadedState.test,
-    extraReducers: {
-    }
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(actionTest.fulfilled, (state, action) => {
+            state.test = action.payload
+        })
+    },
 })
 
-export const reducer = combineReducers({
-})
+export const reducer = combineReducers({})
 
 export const store = configureStore({
     reducer,
