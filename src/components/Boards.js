@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 import Board from './Board';
 import Card from './Card';
 import { v4 as uuidv4 } from 'uuid';
-import { getBoards } from '../store/store';
-import { setBoards } from '../store/store';
+import { getBoards } from '../actions/boards.actions';
+import { setBoards } from '../actions/boards.actions';
 import { useDispatch } from 'react-redux';
 
 export const Boards = () => {
