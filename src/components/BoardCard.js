@@ -2,25 +2,30 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import Board from 'react-trello';
+import { updateDictionary, getBoardList } from '../actions/cards.actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const BoardCard = () => {
 
     const [data, setData] = useState({ lanes: [] })
+    const { boardList } = useSelector(state => state)
+    const dispatch = useDispatch();
 
     function handleChange(data) {
         setData(data);
-        const dictionary = JSON.parse(localStorage.getItem('boardList')) || {};
-        dictionary[id] = data;
-        localStorage.setItem('boardList', JSON.stringify(dictionary));
+        dispatch(updateDictionary(data));
     }
 
     let { id } = useParams();
 
     useEffect(() => {
-        const dictionary = JSON.parse(localStorage.getItem('boardList')) || {};
-        const dictionaryData = dictionary[id];
-        if (dictionaryData) { setData(dictionaryData) };
+        dispatch(getBoardList())
     }, []);
+
+    useEffect(() => {
+        const dictionaryData = boardList.data[id];
+        if (dictionaryData) { setData(dictionaryData) };
+    }, [boardList.data]);
 
     return (
         <Board

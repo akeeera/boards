@@ -19,9 +19,9 @@ export const Boards = () => {
 
     function handleClick() {
         const board = { name: name, id: uuidv4() }
-        const boarder = boards.filter(board => board.id !== 1);
+        const boarder = boards.data.filter(board => board.id !== 1);
         console.log(board, boarder);
-        dispatch(setBoards(boards.data))
+        dispatch(setBoards([...boards.data, board]))
     }
 
     function handleNameChange(event) {
@@ -29,7 +29,7 @@ export const Boards = () => {
     }
 
     function handleRemove(id) {
-        const filterBoards = boards.filter(board => board.id !== id)
+        const filterBoards = boards.data.filter(board => board.id !== id)
         dispatch(setBoards(filterBoards))
     }
 
