@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import Board from 'react-trello';
-import { updateDictionary, getBoardList } from '../actions/cards.actions';
+import { updateDictionary, getBoardList } from '../actions/boardList.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const BoardCard = () => {
@@ -11,20 +11,23 @@ export const BoardCard = () => {
     const { boardList } = useSelector(state => state)
     const dispatch = useDispatch();
 
-    function handleChange(data) {
-        setData(data);
-        dispatch(updateDictionary(data));
-    }
-
     let { id } = useParams();
+
+    function handleChange(data) {
+        dispatch(updateDictionary({ data, id }))
+    }
 
     useEffect(() => {
         dispatch(getBoardList())
     }, []);
 
     useEffect(() => {
-        const dictionaryData = boardList.data[id];
-        if (dictionaryData) { setData(dictionaryData) };
+        if (boardList.data) {
+            const dictionaryData = boardList.data[id];
+            if (dictionaryData) {
+                setData(JSON.parse(JSON.stringify(dictionaryData)))
+            };
+        }
     }, [boardList.data]);
 
     return (

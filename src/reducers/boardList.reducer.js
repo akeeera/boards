@@ -1,10 +1,10 @@
 import {
     createSlice,
 } from '@reduxjs/toolkit'
-import { getBoardList, updateDictionary } from '../actions/cards.actions'
+import { getBoardList, updateDictionary } from '../actions/boardList.actions'
 import { preloadedState } from '../store/preloadedState'
 
-export const sliceCards = createSlice({
+export const sliceBoardList = createSlice({
     name: 'boardList',
     initialState: preloadedState.boardList,
     reducers: {},

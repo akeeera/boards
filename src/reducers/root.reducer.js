@@ -3,9 +3,9 @@ import {
 } from '@reduxjs/toolkit'
 
 import { sliceBoards } from './boards.reducer'
-import { sliceCards } from './cards.reducer'
+import { sliceBoardList } from './boardList.reducer'
 
 export const reducer = combineReducers({
     boards: sliceBoards.reducer,
-    cards: sliceCards.reducer,
+    boardList: sliceBoardList.reducer,
 })
