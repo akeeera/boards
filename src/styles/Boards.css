@@ -4,9 +4,6 @@
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-content: space-between;
 }
 
 h5 {
@@ -218,6 +215,8 @@ p {
 }
 
 .board__name {
+    width: 70%;
+    position: absolute;
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
@@ -229,7 +228,6 @@ p {
     display: inline-block;
     margin-right: 25px;
     margin-bottom: 25px;
-    margin-left: 25px;
     text-decoration: none;
     border-radius: 17px;
     height: 6em;
@@ -256,7 +254,6 @@ p {
     text-decoration: none;
     text-align: center;
     color: rgb(0, 0, 0);
-    margin-left: 250px;
 }
 
 .cross {
@@ -270,4 +267,19 @@ p {
 .cross:hover {
     transition: 0.2s;
     color: #df5555;
+}
+
+.container__card {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 75%;
+}
+
+.container__create-card {
+    margin-left: 30px;
+    display: flex;
 }

@@ -41,17 +41,22 @@ export const Boards = () => {
     return (
         <div className="container" >
 
-            <div>
-                <Card />
-            </div>
-
-            <div className="center">
-                <div className="boards">
-                    {boards.data.map(board => (
-                        <Board name={board.name} id={board.id} onRemove={handleRemove} />
-                    ))}
+            <div className="container__create-card" >
+                <div>
+                    <Card />
                 </div>
             </div>
+
+            <div className="container__card" >
+                <div className="center">
+                    <div className="boards">
+                        {boards.data.map(board => (
+                            <Board name={board.name} id={board.id} onRemove={handleRemove} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
 
             <input type="checkbox" id="openclose"></input>
             <div className="modal-wrapper">
@@ -68,6 +73,7 @@ export const Boards = () => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }
