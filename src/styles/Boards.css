@@ -4,6 +4,8 @@
 }
 
 .container {
+    display: flex;
+    padding: 0 30px;
 }
 
 h5 {
@@ -16,9 +18,8 @@ p {
     font-size: 12px;
 }
 
-/* End Non-Essential  */
-
-.property-card {
+.create-card {
+    cursor: pointer;
     height: 6em;
     width: 14em;
     display: -webkit-box;
@@ -36,11 +37,8 @@ p {
     -webkit-box-shadow: 15px 15px 27px #ff0000, -15px -15px 27px #4bee53;
     box-shadow: 10px 10px 20px #41ec7432, -10px -10px 20px #2a2df538;
 }
-/* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
 
-/* Top Half of card, image. */
-
-.property-image {
+.create-card__image {
     border-radius: 17px;
     height: 6em;
     width: 14em;
@@ -55,9 +53,7 @@ p {
     background-repeat: no-repeat;
 }
 
-/* Bottom Card Section */
-
-.property-description {
+.create-card__description {
     background-color: #fafafc;
     height: 2.2em;
     width: 14em;
@@ -70,32 +66,17 @@ p {
     text-align: center;
 }
 
-/* Social Icons */
-
-.property-social-icons {
-    width: 1em;
-    height: 1em;
-    background-color: black;
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-/* Property Cards Hover States */
-
-.property-card:hover .property-description {
+.create-card:hover .create-card__description {
     height: 0em;
     padding: 0px 1em;
 }
-.property-card:hover .property-image {
+
+.create-card:hover .create-card__image {
     height: 6.1em;
     transform: scale(1.3);
 }
 
-.property-image-title {
+.create-card__image-title {
     text-align: center;
     position: Relative;
     top: 30%;
@@ -105,19 +86,20 @@ p {
     font-size: 1.5em;
 }
 
-.property-card:hover .property-image-title {
+.create-card:hover .create-card__image-title {
     opacity: 1;
 }
 
-#okno {
-    width: 300px;
-    height: 50px;
-    text-align: center;
-    color: #888888;
-    display: none;
+.create-card-wrapper {
+    width: 14em;
+    height: 14em;
+    min-width: 14em;
 }
-#okno:target {
-    display: block;
+
+.create-card__button {
+    cursor: pointer;
+    color: rgb(88, 223, 70);
+    text-decoration: none;
 }
 
 .alert {
@@ -173,14 +155,8 @@ p {
     display: none;
 }
 
-#openclose:checked ~ .modal-wrapper {
+#openclose:checked~.modal-wrapper {
     display: flex;
-}
-
-#button {
-    color: rgb(88, 223, 70);
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .name {
@@ -222,6 +198,7 @@ p {
 }
 
 .board {
+    cursor: pointer;
     transition: 0.5s;
     font-weight: 600;
     text-transform: uppercase;
@@ -250,7 +227,10 @@ p {
 }
 
 .boards {
-    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     text-decoration: none;
     text-align: center;
     color: rgb(0, 0, 0);
@@ -267,19 +247,4 @@ p {
 .cross:hover {
     transition: 0.2s;
     color: #df5555;
-}
-
-.container__card {
-    display: flex;
-    justify-content: center;
-    align-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 75%;
-}
-
-.container__create-card {
-    margin-left: 30px;
-    display: flex;
 }

@@ -5,7 +5,7 @@ import '../styles/Boards.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Board from './Board';
-import Card from './Card';
+import CreateCard from './CreateCard';
 import { v4 as uuidv4 } from 'uuid';
 import { getBoards } from '../actions/boards.actions';
 import { setBoards } from '../actions/boards.actions';
@@ -40,21 +40,11 @@ export const Boards = () => {
 
     return (
         <div className="container" >
-
-            <div className="container__create-card" >
-                <div>
-                    <Card />
-                </div>
-            </div>
-
-            <div className="container__card" >
-                <div className="center">
-                    <div className="boards">
-                        {boards.data.map(board => (
-                            <Board name={board.name} id={board.id} onRemove={handleRemove} />
-                        ))}
-                    </div>
-                </div>
+            <CreateCard />
+            <div className="boards">
+                {boards.data.map(board => (
+                    <Board name={board.name} id={board.id} onRemove={handleRemove} />
+                ))}
             </div>
 
 
@@ -73,7 +63,6 @@ export const Boards = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

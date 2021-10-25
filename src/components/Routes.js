@@ -4,7 +4,6 @@ import '../styles/Boards.css';
 import React from "react";
 import Boards from './Boards'
 import BoardCard from './BoardCard'
-import Board from './Board'
 import '../styles/Boards.css';
 import Logo from './Logo';
 import {
@@ -22,9 +21,7 @@ function Routes() {
             <Logo />
             <Switch>
                 <Route exact path="/boards">
-                    <Boards>
-                        <Board />
-                    </Boards >
+                    <Boards />
                 </Route>
                 <Route path="/board/:id" children={<BoardCard />} />
                 <Route path="*">

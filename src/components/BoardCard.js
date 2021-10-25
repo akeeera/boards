@@ -32,6 +32,7 @@ export const BoardCard = () => {
 
     return (
         <Board
+            style={{ backgroundColor: 'inherit' }}
             canAddLanes
             data={data}
             editable
